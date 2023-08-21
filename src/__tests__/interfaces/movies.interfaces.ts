@@ -1,5 +1,5 @@
-import { DeepPartial, Repository } from 'typeorm'
-import { Movie } from '../../entities'
+import { DeepPartial, Repository } from "typeorm"
+import { Movie } from "../../entities"
 
 type iMovieCreate = {
     name: string
