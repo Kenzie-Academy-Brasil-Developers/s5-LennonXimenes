@@ -1,14 +1,13 @@
+import "express-async-errors";
 import express, { Application } from 'express';
-import { movieController } from "./controllers";
+import { movieRouter } from "./routers/movie.router";
+import middlewares from "./middlewares";
 
 const app: Application = express();
 app.use(express.json());
 
-app.post("/movies", movieController.createMovie);
-app.get("/movies");
+app.use("/movies", movieRouter);
 
-app.patch("/movies/:id");
-app.delete("/movies/:id");
-
+app.use(middlewares.handleErrors);
 
 export default app;

@@ -1,12 +1,22 @@
-import { Repository } from "typeorm";
 import { Movie } from "../entities";
-import { AppDataSource } from "../data-source";
+import { iMovieCreate, iMovieRead, iMovieRepo, iMovieUpdate } from "../__tests__/interfaces";
+import { movieRepo } from "../repositories";
+import { AppError } from "../errors";
 
-const createMovie = async (payload: Omit<Movie, "id">): Promise<Movie> => {
-    const repo: Repository<Movie> = AppDataSource.getRepository(Movie);
-    const movie: Movie = await repo.save(payload);
-
-    return movie;
+const createMovie = async (payload: iMovieCreate): Promise<Movie> => {
+    return await movieRepo.save(payload);
 }
 
-export default { createMovie };
+const readMovie = async (): Promise<iMovieRead> => {
+    return await movieRepo.find();
+}
+
+const partialUpdateMovie = async (movie: Movie, payload: iMovieUpdate): Promise<Movie> => {
+    return await movieRepo.save({ ...movie, ...payload });
+}
+
+const deleteMovie = async (movie: Movie): Promise<void> => {
+    await movieRepo.remove(movie);
+}
+
+export default { createMovie, readMovie, partialUpdateMovie, deleteMovie };
