@@ -1,5 +1,7 @@
 import { validateBody } from "./validateBody.middleware";
 import { handleErrors } from "./handleErrors.middleware";
 import { verifyIdExists } from "./verifyIdExists.middleware";
+import { verifyNameExists } from "./verifyNameExists";
+import { pagination } from "./pagination.middleware";
 
-export default { validateBody, handleErrors, verifyIdExists };
+export default { validateBody, handleErrors, verifyIdExists, verifyNameExists, pagination };
