@@ -4,11 +4,11 @@ import { ZodError } from "zod";
 
 export const handleErrors = (error: unknown, req: Request, res: Response, next: NextFunction): Response => {
     if (error instanceof AppError) {
-        return res.status(error.status).json({ error: error.message });
+        return res.status(error.status).json({ message: error.message });
     };
 
     if (error instanceof ZodError) {
-        return res.status(400).json({ error: error.errors });
+        return res.status(400).json({ message: error.flatten().fieldErrors });
     };
 
     console.error(error);

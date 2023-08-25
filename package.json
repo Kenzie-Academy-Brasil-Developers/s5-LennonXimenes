@@ -4,7 +4,7 @@
   "description": "Há alguns dias você recebeu uma demanda para elaborar a API de um serviço de locação de filmes. Porém a forma com que você executou e as ferramentas que utilizou não agradaram o nosso cliente... É... ele é exigente.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "dev": "tsnd --cls --rs --ignore-watch node_modules src/server.ts",
     "typeorm": "typeorm-ts-node-commonjs"
   },
